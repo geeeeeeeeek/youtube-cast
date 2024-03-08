@@ -24,123 +24,131 @@
     justify-content: space-between;
     width: 100%;
     height: 100%;
+    background: rgb(245, 245, 245);
   }
-  input {
+  #frame.dark {
+    background: #212121;
+    transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1)
+  }
+  #video-ids {
     display: block;
-    width: 100%;
-    background: rgba(0,0,0,0.05);
+    width: 500px;
+    background: rgb(245, 245, 245);
     color: rgb(19, 19, 19);
-    margin-left: 24px;
-    padding: 0 16px;
-    height: 40px;
+    padding-left: 76px;
+    height: 48px;
     font-size: 14px;
     line-height: 36px;
-    border-radius: 18px;
+    border-radius: 24px;
     border: none;
+  }
+  #video-ids:focus-visible {
+    outline: 1.6px solid #FF0000;
+  }
+  #video-ids.dark {
+    background: #212121;
+    transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    color: rgb(245, 245, 245);
   }
   iframe {
     background: #fff;
     flex: 1 1 auto;
     display: block;
     border-radius: 12px;
-    border: 1px solid rgba(0,0,0,0.1);
   }
+  iframe.dark {
+    background: #282828;
+    transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1)
+}
   #searchbox {
-    display: flex;
-    margin-bottom: 12px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
   }
-  .ytb-icon {
-    width: 97px;
+  #searchbox.ready {
+    fill-opacity: 0;
+    opacity: 0;
+  }
+  #searchbox:hover {
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), fill-opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    fill-opacity: 1;
+  }
+  #ytb-icon {
+    width: 29px;
+    position: absolute;
+    margin: 14px 28px;
+  }
+  #dark-icon {
+    background: #fff;
+    position: absolute;
+    right: 50px;
+    top: 46px;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    padding: 6px 3px 6px 9px;
+    cursor: grab;
+  }
+  #dark-icon.dark {
+    background: #282828;
+    transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1)
   }
   </style>
 </head>
 <body>
   <div id="frame">
     <div id="searchbox">
-      <svg xmlns="http://www.w3.org/2000/svg" class="ytb-icon" viewBox="0 0 97 20" focusable="false">
-        <svg viewBox="0 0 97 20" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <svg xmlns="http://www.w3.org/2000/svg" id="ytb-icon" viewBox="0 0 29 20" focusable="false">
+        <svg viewBox="0 0 29 20" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
           <g>
             <path d="M27.9704 3.12324C27.6411 1.89323 26.6745 0.926623 25.4445 0.597366C23.2173 2.24288e-07 14.2827 0 14.2827 0C14.2827 0 5.34807 2.24288e-07 3.12088 0.597366C1.89323 0.926623 0.924271 1.89323 0.595014 3.12324C-2.8036e-07 5.35042 0 10 0 10C0 10 -1.57002e-06 14.6496 0.597364 16.8768C0.926621 18.1068 1.89323 19.0734 3.12324 19.4026C5.35042 20 14.285 20 14.285 20C14.285 20 23.2197 20 25.4468 19.4026C26.6769 19.0734 27.6435 18.1068 27.9727 16.8768C28.5701 14.6496 28.5701 10 28.5701 10C28.5701 10 28.5677 5.35042 27.9704 3.12324Z" fill="#FF0000"></path>
             <path d="M11.4275 14.2854L18.8475 10.0004L11.4275 5.71533V14.2854Z" fill="white"></path>
           </g>
-          <g>
-            <path d="M40.0566 6.34524V7.03668C40.0566 10.4915 38.5255 12.5118 35.1742 12.5118H34.6638V18.5583H31.9263V1.42285H35.414C38.6078 1.42285 40.0566 2.7728 40.0566 6.34524ZM37.1779 6.59218C37.1779 4.09924 36.7287 3.50658 35.1765 3.50658H34.6662V10.4727H35.1365C36.6064 10.4727 37.1803 9.40968 37.1803 7.10253L37.1779 6.59218Z"></path>
-            <path d="M46.5336 5.8345L46.3901 9.08238C45.2259 8.83779 44.264 9.02123 43.836 9.77382V18.5579H41.1196V6.0391H43.2857L43.5303 8.75312H43.6337C43.9183 6.77288 44.8379 5.771 46.0232 5.771C46.1949 5.7757 46.3666 5.79687 46.5336 5.8345Z"></path>
-            <path d="M49.6567 13.2456V13.8782C49.6567 16.0842 49.779 16.8415 50.7198 16.8415C51.6182 16.8415 51.8228 16.1501 51.8439 14.7178L54.2734 14.8613C54.4568 17.5565 53.0481 18.763 50.6586 18.763C47.7588 18.763 46.9004 16.8627 46.9004 13.4126V11.223C46.9004 7.58707 47.8599 5.80908 50.7409 5.80908C53.6407 5.80908 54.3769 7.32131 54.3769 11.0984V13.2456H49.6567ZM49.6567 10.6703V11.5687H51.7193V10.675C51.7193 8.37258 51.5547 7.71172 50.6821 7.71172C49.8096 7.71172 49.6567 8.38669 49.6567 10.675V10.6703Z"></path>
-            <path d="M68.4103 9.09902V18.5557H65.5928V9.30834C65.5928 8.28764 65.327 7.77729 64.7132 7.77729C64.2216 7.77729 63.7724 8.06186 63.4667 8.59338C63.4832 8.76271 63.4902 8.93439 63.4879 9.10373V18.5605H60.668V9.30834C60.668 8.28764 60.4022 7.77729 59.7884 7.77729C59.2969 7.77729 58.8665 8.06186 58.5631 8.57456V18.5628H55.7456V6.03929H57.9728L58.2221 7.63383H58.2621C58.8947 6.42969 59.9178 5.77588 61.1219 5.77588C62.3072 5.77588 62.9799 6.36854 63.288 7.43157C63.9418 6.34973 64.9225 5.77588 66.0443 5.77588C67.7564 5.77588 68.4103 7.00119 68.4103 9.09902Z"></path>
-            <path d="M69.8191 2.8338C69.8191 1.4862 70.3106 1.09814 71.3501 1.09814C72.4132 1.09814 72.8812 1.54734 72.8812 2.8338C72.8812 4.22373 72.4108 4.57181 71.3501 4.57181C70.3106 4.56945 69.8191 4.22138 69.8191 2.8338ZM69.9837 6.03935H72.6789V18.5629H69.9837V6.03935Z"></path>
-            <path d="M81.891 6.03955V18.5631H79.6849L79.4403 17.032H79.3792C78.7466 18.2573 77.827 18.7677 76.684 18.7677C75.0095 18.7677 74.2522 17.7046 74.2522 15.3975V6.0419H77.0697V15.2352C77.0697 16.3382 77.3002 16.7874 77.867 16.7874C78.3844 16.7663 78.8477 16.4582 79.0688 15.9902V6.0419H81.891V6.03955Z"></path>
-            <path d="M96.1901 9.09893V18.5557H93.3726V9.30825C93.3726 8.28755 93.1068 7.7772 92.493 7.7772C92.0015 7.7772 91.5523 8.06177 91.2465 8.59329C91.263 8.76027 91.2701 8.9296 91.2677 9.09893V18.5557H88.4502V9.30825C88.4502 8.28755 88.1845 7.7772 87.5706 7.7772C87.0791 7.7772 86.6487 8.06177 86.3453 8.57447V18.5627H83.5278V6.0392H85.7527L85.9973 7.63139H86.0372C86.6699 6.42725 87.6929 5.77344 88.8971 5.77344C90.0824 5.77344 90.755 6.3661 91.0631 7.42913C91.7169 6.34729 92.6976 5.77344 93.8194 5.77344C95.541 5.77579 96.1901 7.0011 96.1901 9.09893Z"></path>
-            <path d="M40.0566 6.34524V7.03668C40.0566 10.4915 38.5255 12.5118 35.1742 12.5118H34.6638V18.5583H31.9263V1.42285H35.414C38.6078 1.42285 40.0566 2.7728 40.0566 6.34524ZM37.1779 6.59218C37.1779 4.09924 36.7287 3.50658 35.1765 3.50658H34.6662V10.4727H35.1365C36.6064 10.4727 37.1803 9.40968 37.1803 7.10253L37.1779 6.59218Z"></path>
-          </g>
         </svg>
       </svg>
-      <input type="text" id="url" placeholder="Paste YouTube URL here..." />
+      <input type="text" id="video-ids" placeholder="Paste YouTube video IDs here..." />
+      <svg id="dark-icon" width="20px" height="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 380.446 380.446" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#F7CF52;" d="M144.264,0c-35.976,0-69.617,9.99-98.306,27.343c55.09,33.321,91.917,93.799,91.917,162.88 s-36.827,129.559-91.917,162.88c28.689,17.353,62.33,27.343,98.306,27.343c105.058,0,190.224-85.166,190.224-190.224 S249.322,0,144.264,0z"></path> <path style="fill:#E2BC50;" d="M144.258,0.003c-5.8,0-11.54,0.26-17.2,0.77c96.95,8.74,172.93,90.22,172.93,189.45 c0,99.25-76.01,180.74-172.99,189.45c5.68,0.51,11.44,0.77,17.26,0.77c105.06,0,190.23-85.16,190.23-190.22 S249.318,0.003,144.258,0.003z"></path> </g></svg>
     </div>
     <iframe frameborder="0" allowfullscreen></iframe>
   </div>
 </body>
 <script>
 const $ = document.querySelector.bind(document);
-const urlElem = $("#url");
+const videoIDsElem = $("#video-ids");
+const searchboxElem = $("#searchbox");
 const iframeElem = $("iframe");
-urlElem.addEventListener('change', (e) => {
-  const url = urlElem.value.trim();
-  if (url) {
-    iframeElem.src = getVideoEmbedUrl(url);
+const darkModeElem = $("#dark-icon");
+const frameElem = $("#frame");
+
+videoIDsElem.addEventListener('keypress', (e) => {
+  if (e.key != 'Enter') {
+    return
+  }
+  const videoIDs = videoIDsElem.value.trim();
+  iframeElem.src = getVideoEmbedUrl(videoIDs);
+  searchboxElem.classList.add("ready");
+});
+
+darkModeElem.addEventListener('click', (e) => {
+  if (darkModeElem.classList.contains("dark")) {
+    darkModeElem.classList.remove("dark");
+    frameElem.classList.remove("dark");
+    iframeElem.classList.remove("dark");
+    videoIDsElem.classList.remove("dark");
+  } else {
+    darkModeElem.classList.add("dark");
+    frameElem.classList.add("dark");
+    iframeElem.classList.add("dark");
+    videoIDsElem.classList.add("dark");
   }
 });
 
- // This is to make the bookmarklet work.
- if (window.location.search.substr(1) != "") {
-     iframeElem.src = getVideoEmbedUrl(decodeURIComponent(window.location.search.substr(1)));
- }
-
-function getVideoEmbedUrl(url) {
-  url = url.replace('http://', 'https://');
-  if (url.indexOf('twitch.tv') > 0) {
-    var url2 = ''
-    url2 += 'https://player.twitch.tv/?enableExtensions=true&muted=false&parent=greggman.github.io&player=popout&video='
-    url2 +=  url.substr(url.lastIndexOf('/') + 1)
-    url = url2
-  }
-  else if (url.indexOf('embed') < 0) {
-    const params = getParams(url);
-    params.autoplay = 1;
-    if (params.v) {
-      url = "https://www.youtube.com/embed/" + encodeURIComponent(params.v);
-    } else if (params.list) {
-      url = "https://www.youtube.com/embed/videoseries";
-    }
-    url += makeSearchUrl(params) + getHash(url);
-  }
-  return url;
+function getVideoEmbedUrl(videoIDs) {
+  return "https://www.youtube.com/embed?autoplay=1&playlist="+videoIDs;
 }
 
-function getHash(url) {
-  const a = document.createElement('a');
-  a.href = url;
-  return a.hash;
-}
-
-function makeSearchUrl(params) {
-  return '?' + Object.keys(params).map(key => {
-    return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
-  }).join('&');
-}
-
-function getParams(url) {
-  const a = document.createElement('a');
-  a.href = url;
-  const params = {};
-  const search = a.search;
-  if (search) {
-    search.substring(1).split("&").forEach(pair => {
-      const keyValue = pair.split('=').map(decodeURIComponent);
-      params[keyValue[0]] = keyValue[1];
-    });
-  }
-  return params;
-}
 </script>
 </html>
